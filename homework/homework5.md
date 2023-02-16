@@ -64,15 +64,15 @@ When we do the CODECOPY operation, what are we overwriting ?
     ```
     PUSH1 0x08 
 
-    PUSH1 0x07
+    PUSH1 0x07 - |0x08|
 
-    058 ADD
+    058 ADD - |0x07|0x08|
 
-    059 PUSH1 0x40
+    059 PUSH1 0x40 |0xf|
 
-    061 MLOAD 
+    061 MLOAD |0x40|0xf|
 
-    062 MSTORE
+    062 MSTORE |0x80|0xf|
     ```
 
 5.  Can you think of a situation where the opcode EXTCODECOPY is used ?
