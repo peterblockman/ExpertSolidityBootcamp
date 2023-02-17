@@ -9,10 +9,12 @@ contract Add {
         // and return the result from the second block
         assembly {
             let result := add(x, y)
+            mstore(mload(0x40), result)
+            // mstore(0x40, add(mload(0x40), 0x20))
         }
 
         assembly {
-            return()
+            return(mload(0x40), 0x20)
         }
     }
 }
