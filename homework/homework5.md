@@ -51,9 +51,11 @@ When we do the CODECOPY operation, what are we overwriting ?
         function add()  external  pure{
 
             assembly{
-
-                mstore(mload(0x40), add(0x07,  0x08))
-
+                let curFMP := mload(0x40)
+                // store the value
+                mstore(curFMP, add(0x07,  0x08))
+                // update the memory pointer by 32 bytes
+                mstore(0x40, add(curFMP, 0x20))
             }	
 
         }
