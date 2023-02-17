@@ -7,7 +7,9 @@ contract Scope {
         // Modify state of the count variable from within
         // the assembly segment
         assembly {
-
+            let countSlot := count.slot
+            let newCount := add(sload(countSlot), num)
+            sstore(countSlot, newCount)
         }
     }
 }
